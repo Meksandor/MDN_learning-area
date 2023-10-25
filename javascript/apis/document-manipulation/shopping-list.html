@@ -1,37 +1,52 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping list example</title>
-    <style>
-      li {
-        margin-bottom: 10px;
-      }
 
-      li button {
-        font-size: 8px;
-        margin-left: 20px;
-        color: #666;
-      }
-    </style>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping list example</title>
+  <style>
+    li {
+      margin-bottom: 10px;
+    }
 
-    <h1>My shopping list</h1>
+    li button {
+      font-size: 8px;
+      margin-left: 20px;
+      color: #666;
+    }
+  </style>
 
-    <div>
-      <label for="item">Enter a new item:</label>
-      <input type="text" name="item" id="item">
-      <button>Add item</button>
-    </div>
+</head>
 
-    <ul>
+<body>
+
+  <h1>My shopping list</h1>
+
+  <div>
+    <label for="item">Enter a new item:</label>
+    <input type="text" name="item" id="itemEnter">
+    <button id="getItemButton" onclick="createMenuItemByInput()">Add item</button>
+
+    <ul id="shoppingItems">
 
     </ul>
+  </div>
+</body>
 
-    <script>
+<script>
+  var inputBoxEntry = document.getElementById("itemEnter");
+  var inputBoxEntryValue = inputBoxEntry.value;
 
-    </script>
-  </body>
+  function createMenuItemByInput(inputBoxEntryValue) {
+    const shoppingItemsList = document.getElementById('shoppingItems')
+
+    let li = document.createElement('li');
+    li.textContent = inputBoxEntryValue;
+    shoppingItemsList.appendChild(li);
+
+    inputBoxEntry.value = '';
+  }
+</script>
+
 </html>
