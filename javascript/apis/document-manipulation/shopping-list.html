@@ -66,8 +66,8 @@
 <script>
 
   function createListItemByInput(inputBoxEntryValue) {
-    var inputBoxEntry = document.getElementById("itemEnter");
-    var inputBoxEntryValue = inputBoxEntry.value;
+    var inputBox = document.getElementById("itemEnter");
+    var inputBoxEntryValue = inputBox.value;
 
     const shoppingItemsList = document.getElementById('shoppingItems')
 
@@ -85,7 +85,8 @@
       li.remove();
     });
 
-    inputBoxEntry.value = '';
+    inputBox.value = '';
+    inputBox.focus();
   };
 
 </script>
