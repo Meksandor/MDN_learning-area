@@ -15,6 +15,33 @@
       margin-left: 20px;
       color: #666;
     }
+
+
+    body {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #barAndList {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #entryBar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    #shoppingItems {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   </style>
 
 </head>
@@ -23,10 +50,12 @@
 
   <h1>My shopping list</h1>
 
-  <div>
-    <label for="item">Enter a new item:</label>
-    <input type="text" name="item" id="itemEnter">
-    <button id="getItemButton" onclick="createMenuItemByInput()">Add item</button>
+  <div id="barAndList">
+    <div id="entryBar">
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="itemEnter">
+      <button id="getItemButton" onclick="createListItemByInput()">Add item</button>
+    </div>
 
     <ul id="shoppingItems">
 
@@ -35,18 +64,30 @@
 </body>
 
 <script>
-  var inputBoxEntry = document.getElementById("itemEnter");
-  var inputBoxEntryValue = inputBoxEntry.value;
 
-  function createMenuItemByInput(inputBoxEntryValue) {
+  function createListItemByInput(inputBoxEntryValue) {
+    var inputBoxEntry = document.getElementById("itemEnter");
+    var inputBoxEntryValue = inputBoxEntry.value;
+
     const shoppingItemsList = document.getElementById('shoppingItems')
 
     let li = document.createElement('li');
     li.textContent = inputBoxEntryValue;
+    li.className = 'itemClassName'
     shoppingItemsList.appendChild(li);
 
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = "Delete"
+    li.appendChild(deleteButton);
+
+    deleteButton.addEventListener('click', function () {
+      var nodeToRemove = document.getElementsByClassName('itemClassName');
+      li.remove();
+    });
+
     inputBoxEntry.value = '';
-  }
+  };
+
 </script>
 
 </html>
